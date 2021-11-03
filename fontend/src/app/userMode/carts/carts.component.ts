@@ -71,7 +71,16 @@ export class CartsComponent implements OnInit {
         counts.price = this.cs.price;
         console.log(counts);
         c1 = JSON.stringify(counts)
-        this.cs.addOrder({"order":c1});
+        this.cs.addOrder({order:c1}).subscribe(
+          data => {
+            console.log();
+            alert('รายการสั่งซื้อได้บันทึกแล้ว!!!')
+
+          },
+          err => {
+            console.log(err);
+          }
+        );
   }
 
 }
