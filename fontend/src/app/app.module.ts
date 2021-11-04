@@ -21,6 +21,7 @@ import { SearchComponent } from './userMode/search/search.component';
 import { BuyProductsComponent } from './userMode/buy-products/buy-products.component';
 import { DeleteCartComponent } from './userMode/delete-cart/delete-cart.component';
 import { HomeComponent } from './adminMode/home/home.component';
+import { ResetPasswordComponent } from './userMode/reset-password/reset-password.component';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { HomeComponent } from './adminMode/home/home.component';
     BuyProductsComponent,
     DeleteCartComponent,
     HomeComponent,
+    ResetPasswordComponent,
 
     
   ],

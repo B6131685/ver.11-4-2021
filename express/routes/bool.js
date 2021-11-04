@@ -181,4 +181,15 @@ router.route('/updateQuantityBook').post( (req,res)=>{
 
 })
 
+router.route('/updateBookfromuser').post( (req,res)=>{
+
+    var query = {"name":req.body.name};
+
+        Book.findByIdAndUpdate(query, {"quantity":req.body.quantity}, {new: true}, function(err, doc) {
+            if (err) return res.send(500, {error: err});
+            return res.send('Succesfully saved.');
+        });
+
+})
+
 module.exports = router

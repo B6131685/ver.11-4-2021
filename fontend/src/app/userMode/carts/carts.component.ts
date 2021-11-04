@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BookService } from 'src/app/services/book.service';
 import { cartsType } from 'src/app/cart.model';
 import { CartService } from 'src/app/services/cart.service';
+import { FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-carts',
@@ -9,12 +10,18 @@ import { CartService } from 'src/app/services/cart.service';
   styleUrls: ['./carts.component.css']
 })
 export class CartsComponent implements OnInit {
-
+  addr = new FormControl('')
   count = 0;
 
   carts : any;
 
-  constructor(private cs: CartService) { 
+  book = [{
+    _id:String,
+    namebook:String,
+    amount:Number
+  }]
+
+  constructor(private cs: CartService,private BookService:BookService) { 
   }
 
   getCart(){
@@ -46,6 +53,11 @@ export class CartsComponent implements OnInit {
     let arrayname = [];
     let unique
     let c1
+    
+    let num1=myobj.length
+    for (const property in myobj) {
+      console.log(`${property}: ${myobj.values}`);
+    }
     for(var index in myobj)
     { 
         //console.log(myobj[index]);
@@ -54,11 +66,8 @@ export class CartsComponent implements OnInit {
         //console.log('arrayid');
         //console.log(arrayid);
         //console.log('arrayname');
-        //console.log(arrayname);
-        
+        //console.log(arrayname); 
         //console.log(c1);
-        
-        
     }
     unique = arrayname.filter((item, i, ar) => ar.indexOf(item) === i);
         //console.log(unique);
@@ -69,13 +78,14 @@ export class CartsComponent implements OnInit {
         console.log(counts)
         //console.log(typeof counts);
         counts.price = this.cs.price;
+        counts.adders = this.addr.value;
+
         console.log(counts);
         c1 = JSON.stringify(counts)
         this.cs.addOrder({order:c1}).subscribe(
           data => {
             console.log();
             alert('รายการสั่งซื้อได้บันทึกแล้ว!!!')
-
           },
           err => {
             console.log(err);

@@ -24,6 +24,11 @@ try {
     User = mongoose.model('users', userSchema);
 }
 
+const makeHash = async(plainText) => {
+    const result = await bcrypt.hash(plainText, 10);
+    return result;
+}
+
 const compareHash = async(plainText, hashText) => {
     return new Promise((resolve, reject) => {
         bcrypt.compare(plainText, hashText, (err, data)=>{
@@ -67,6 +72,7 @@ router.route('/signin')
         const loginStatus =await compareHash(playload.password, result.password);
         
         const status = loginStatus.status;
+        console.log("this casue");
         console.log(status);
         //สร้าง token ขึ้นมา
         if(status){
@@ -79,6 +85,29 @@ router.route('/signin')
     }catch (error){
         res.status(404).send(error)
     }
+})
+
+
+router.route('/resetPassword').post( (req,res)=>{
+
+    var query = {"_id":req.body._id};
+    makeHash(req.body.password)
+    .then(hashText => {
+        const playload = {
+            password: hashText,
+        }
+        User.findByIdAndUpdate(query, playload, {new: true}, function(err, doc) {
+            if (err) return res.send(500, {error: err});
+            return res.send('Succesfully saved.');
+        });
+        //console.log(playload);  
+    })
+    .catch( err => {
+
+    })
+    
+        
+
 })
 
 module.exports = router

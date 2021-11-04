@@ -34,8 +34,13 @@
         <p class="text-right">
             <b>Cart Total: </b> {{getCounter()}}
         </p>
+        <p class="text-right">
+            <b> ที่อยู่ </b> 
+            <input type="text"  name="search" class="form-control" style="width: 300px" [formControl]="addr">
+        </p>
         </div>
         <button type="button" class="btn btn-primary" (click)="confirm()">สั่งซื้อตะกร้าสินค้า</button>
+        <button type="button" class="btn btn-danger" (click)="confirm()">test</button>
       </div>
     </div>
 </div>

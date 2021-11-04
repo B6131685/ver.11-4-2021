@@ -12,6 +12,7 @@ import { CartsComponent } from './userMode/carts/carts.component';
 import { ShowproductsComponent } from './userMode/showproducts/showproducts.component';
 import { SearchComponent } from './userMode/search/search.component';
 import { HomeComponent } from './adminMode/home/home.component';
+import { ResetPasswordComponent } from './userMode/reset-password/reset-password.component';
 const routes: Routes = [
   {path: 'home1', component: AppComponent},
   {path: 'home2', component: MainhomeComponent},
@@ -40,6 +41,8 @@ const routes: Routes = [
     },
     {
       path: 'search', component:SearchComponent
+    },{
+      path: 'resetpassword', component:ResetPasswordComponent
     }
   ]},
   {path: '',

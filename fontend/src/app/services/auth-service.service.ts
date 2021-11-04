@@ -88,4 +88,11 @@ export class AuthServiceService {
           return data;
       }));
       }
+
+      updatePassword(product: any){
+        return this.http.post<any>('http://localhost:3000/bookstore/resetPassword', product)
+        .pipe(map(data =>{
+          return data;
+        }))
+      }
 }
