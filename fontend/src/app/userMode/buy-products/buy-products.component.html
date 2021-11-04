@@ -1,7 +1,8 @@
 <div class="col" >
-    <a class="btn btn-primary" role="button" style="width: 150px;" *ngIf="show" (click)="addtoCart()">
+    <input type="number" min="0" class="form-control" style="width: 300px" [formControl]="amount">
+    <a class="btn btn-primary" role="button" style="width: 150px;" *ngIf="show" (click)="buy()">
         <i>
-            เพิ่มลงตะกร้า
+            ซื้อ
         </i>
     </a>
 </div>

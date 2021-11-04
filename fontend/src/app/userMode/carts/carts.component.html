@@ -23,7 +23,10 @@
                     <td>{{item.price}}</td>
                     <td><img [src]="item.img" style="height:150px;"></td>
                     <td>
-                        <app-delete-cart [item]="i"></app-delete-cart>
+                        <div class="row">
+                            <app-delete-cart [item]="i"></app-delete-cart>
+                        </div>
+                        
                     </td> 
                 </tr>
             </tbody>
